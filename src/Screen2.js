@@ -38,6 +38,15 @@ class Screen2 extends Component {
   };
   render() {
     const {previousSelectedId, selectedId} = this.state;
+    let id1;
+    let id2;
+    if (previousSelectedId < selectedId) {
+      id1 = previousSelectedId;
+      id2 = selectedId;
+    } else {
+      id2 = previousSelectedId;
+      id1 = selectedId;
+    }
     return (
       <SafeAreaView style={{flex: 1}}>
         <View style={{flex: 1, flexDirection: 'row'}}>
@@ -52,25 +61,17 @@ class Screen2 extends Component {
               style={{
                 width: 3,
                 height:
-                  previousSelectedId < selectedId
+                  previousSelectedId == selectedId
                     ? this.selectedItemLine.interpolate({
-                        inputRange: [
-                          previousSelectedId,
-                          previousSelectedId + 0.1,
-                          selectedId - 0.1,
-                          selectedId,
-                        ],
-                        outputRange: [0, 100, 100, 0],
+                        inputRange: [id2, id2 + 0.1],
+                        outputRange: [100, 0],
+                        extrapolate: 'clamp',
                       })
                     : this.selectedItemLine.interpolate({
-                        inputRange: [
-                          selectedId,
-                          selectedId + 0.1,
-                          previousSelectedId - 0.1,
-                          previousSelectedId,
-                        ],
+                        inputRange: [id1, id1 + 0.1, id2 - 0.1, id2],
                         outputRange: [0, 100, 100, 0],
                       }),
+
                 marginTop: 10,
                 marginLeft: 5,
                 backgroundColor: 'red',
