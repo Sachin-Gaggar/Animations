@@ -63,9 +63,14 @@ class Screen2 extends Component {
                 height:
                   previousSelectedId == selectedId
                     ? this.selectedItemLine.interpolate({
-                        inputRange: [id2, id2 + 0.1],
-                        outputRange: [100, 0],
-                        extrapolate: 'clamp',
+                        inputRange: [
+                          id2 / 2,
+                          id2 - 0.001,
+                          id2,
+                          id2 + 0.001,
+                          (id2 * 3) / 2,
+                        ],
+                        outputRange: [100, 100, 0, 100, 100],
                       })
                     : this.selectedItemLine.interpolate({
                         inputRange: [id1, id1 + 0.1, id2 - 0.1, id2],
