@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import OTP from './src/OTP';
-import Screen2 from './src/Screen2';
+import Pages from './src/screens/Pages';
 
 class App extends Component {
   constructor(props) {
@@ -8,7 +7,7 @@ class App extends Component {
     this.state = {};
   }
   render() {
-    return <Screen2 />;
+    return <Pages />;
   }
 }
 
