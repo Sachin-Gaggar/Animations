@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Grid from './src/screens/Grid';
 import Pages from './src/screens/Pages';
 
 class App extends Component {
@@ -7,7 +8,7 @@ class App extends Component {
     this.state = {};
   }
   render() {
-    return <Pages />;
+    return <Grid />;
   }
 }
 

@@ -4,7 +4,9 @@ import {
   Dimensions,
   PanResponder,
   SafeAreaView,
+  Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {carosoulData} from '../constants/carasoul';
@@ -61,8 +63,14 @@ class Page extends Component {
   render() {
     return (
       <SafeAreaView style={styles.fullScreenFlex}>
+        <TouchableOpacity onPress={() => this.props.back()}>
+          <Text style={{color: 'blue'}}>{'<'}Go Back</Text>
+        </TouchableOpacity>
         <Carasoul carosoulData={carosoulData} />
         <View {...this.panResponder.panHandlers} style={styles.fullScreenFlex}>
+          <View style={styles.heading}>
+            <Text style={styles.headingTxt}>{this.props.index}</Text>
+          </View>
           <CustomInput />
           <CustomInput />
           <CustomInput />

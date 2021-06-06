@@ -34,4 +34,20 @@ export const styles = StyleSheet.create({
     backgroundColor: '#EEE',
     borderRadius: 20,
   },
+  heading: {
+    alignItems: 'center',
+  },
+  headingTxt: {
+    fontSize: 20,
+    margin: 10,
+  },
+  grid: {
+    width: width / 2 - 10,
+    borderWidth: 1,
+    margin: 5,
+  },
+  previewImg: {
+    width: width / 2 - 12,
+    height: 200,
+  },
 });

@@ -16,6 +16,12 @@ class Pages extends Component {
         <FlatList
           ref={this.ParentScrollView}
           horizontal
+          initialScrollIndex={this.props.selected}
+          getItemLayout={(data, index) => ({
+            length: width,
+            offset: width * index,
+            index,
+          })}
           pagingEnabled
           data={pagesData}
           keyExtractor={(item) => item.id.toString()}
@@ -23,11 +29,13 @@ class Pages extends Component {
             <Page
               key={index}
               index={index}
+              back={this.props.back}
               maxLength={pagesData.length}
               parentScrollRef={this.ParentScrollView}
             />
           )}
-          scrollEnabled={false}></FlatList>
+          scrollEnabled={false}
+        />
       </View>
     );
   }
