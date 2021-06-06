@@ -13,20 +13,21 @@ class Pages extends Component {
   render() {
     return (
       <View style={styles.fullScreenFlex}>
-        <ScrollView
+        <FlatList
           ref={this.ParentScrollView}
           horizontal
           pagingEnabled
-          scrollEnabled={false}>
-          {pagesData.map((item, index) => (
+          data={pagesData}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({item, index}) => (
             <Page
               key={index}
               index={index}
               maxLength={pagesData.length}
               parentScrollRef={this.ParentScrollView}
             />
-          ))}
-        </ScrollView>
+          )}
+          scrollEnabled={false}></FlatList>
       </View>
     );
   }

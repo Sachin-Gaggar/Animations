@@ -31,11 +31,8 @@ class Page extends Component {
     ),
     onPanResponderRelease: () => {
       if (this.swipe._value > 0) {
-        console.log('backward');
         this.backwardSwipe();
       } else {
-        console.log('forward');
-
         this.forwardSwipe();
       }
     },
@@ -44,9 +41,9 @@ class Page extends Component {
     const {index, parentScrollRef} = this.props;
 
     if (index != 0) {
-      const scrollTo = width * (index - 1);
-      parentScrollRef.current.scrollTo({
-        x: scrollTo,
+      const scrollTo = index - 1;
+      parentScrollRef.current.scrollToIndex({
+        index: scrollTo,
         animated: true,
       });
     }
@@ -54,9 +51,9 @@ class Page extends Component {
   forwardSwipe = () => {
     const {index, maxLength, parentScrollRef} = this.props;
     if (index != maxLength - 1) {
-      const scrollTo = width * (index + 1);
-      parentScrollRef.current.scrollTo({
-        x: scrollTo,
+      const scrollTo = index + 1;
+      parentScrollRef.current.scrollToIndex({
+        index: scrollTo,
         animated: true,
       });
     }
